@@ -11,15 +11,15 @@ const SizeVariantStyles: {
   [size in ButtonSizes]: Record<string, string>;
 } = {
   large: {
-    text: "text-7xl lg:text-5xl",
+    text: "text-4xl lg:text-5xl",
     font: "font-cursive",
   },
   medium: {
-    text: "text-5xl lg:text-3xl",
+    text: "text-xl lg:text-3xl",
     font: "font-cursive",
   },
   small: {
-    text: "text-4xl lg:text-2xl",
+    text: "text-lg lg:text-2xl",
     font: "font-cursive",
   },
 };

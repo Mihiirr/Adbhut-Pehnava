@@ -9,10 +9,21 @@ import {
   ScrollRestoration,
   useCatch,
 } from "@remix-run/react";
+import Button from "./components/Button";
 import styles from "./styles/app.css";
 
 export function links() {
-  return [{ rel: "stylesheet", href: styles }];
+  return [
+    { rel: "stylesheet", href: styles },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&family=Smooch&display=swap",
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&family=Smooch&family=The+Nautigal:wght@700&display=swap",
+    },
+  ];
 }
 
 export const meta: MetaFunction = () => {
@@ -110,11 +121,8 @@ export function CatchBoundary() {
         <p className="text-5xl mb-6">
           {caught.status} {caught.statusText}!
         </p>
-        <Link
-          to="/"
-          className="h-10 w-36 flex items-center justify-center text-lg border-2 border-gray-200 hover:bg-stone-100"
-        >
-          Home Page
+        <Link to="/">
+          <Button variant="secondary">Home Page</Button>
         </Link>
       </div>
     </Document>

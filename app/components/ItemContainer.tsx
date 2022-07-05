@@ -15,33 +15,35 @@ type Props = {
 
 const ItemContainer: React.FC<Props> = (props) => {
   return (
-    <div className="h-auto max-w-7xl mt-20 mx-auto">
-      <div className="h-20 w-full flex items-end justify-between">
-        <div className="h-2/4 w-4/12 border-t-2"></div>
-        <div className="h-full w-4/12 flex items-center justify-center text-3xl">
+    <div className="h-auto lg:max-w-7xl mt-6 lg:mt-20 lg:mx-auto flex flex-col items-center">
+      <div className="h-10 px-4 lg:h-20 w-full flex items-end justify-between">
+        <div className="h-2/4 w-2/12 lg:w-2/5 border-t-2 border-stone-600"></div>
+        <div className="h-full w-7/12 flex items-center justify-center text-base lg:text-xl text-stone-600">
           {props.title}
         </div>
-        <div className="h-2/4 w-4/12 border-t-2"></div>
+        <div className="h-2/4 w-2/12 lg:w-2/5 border-t-2 border-stone-600"></div>
       </div>
-      <div className="flex w-full justify-between">
+      <div className="w-50 h-8 bg-green-400">
+        <Link to="wip">
+          <Button>SHOW ALL PRODUCTS</Button>
+        </Link>
+      </div>
+      <div className="grid grid-cols-3 lg:grid-cols-4 gap-x-1 lg:gap-x-24 gap-y-10 mt-10 text-center">
         {props.product.map((items) => (
           <Link to={items.id} key={items.id}>
-            <img
-              src={`${items.image}`}
-              height={props.height}
-              width={props.width}
-              alt="items"
-              className="hover:cursor-pointer"
-            />
+            <div className="h-48 w-32 lg:h-96 lg:w-64 flex items-center">
+              <img
+                src={`${items.image}`}
+                height={props.height}
+                width={props.width}
+                alt="items"
+                className="hover:cursor-pointer"
+              />
+            </div>
+            <p className="text-stone-600">Peace white</p>
+            <p className="text-stone-500">₹600</p>
           </Link>
         ))}
-      </div>
-      <div className="mt-10 flex w-full items-center justify-center">
-        <div className="w-32">
-          <Link to="/">
-            <Button>See more</Button>
-          </Link>
-        </div>
       </div>
     </div>
   );

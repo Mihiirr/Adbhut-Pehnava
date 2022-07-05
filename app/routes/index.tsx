@@ -9,6 +9,11 @@ export default function Index() {
       isNew: true,
     },
     {
+      id: "6",
+      image: "/JWJSET3.webp",
+      isNew: false,
+    },
+    {
       id: "2",
       image: "/dress2.jpg",
       isNew: true,
@@ -18,9 +23,7 @@ export default function Index() {
       image: "/dress3.jpg",
       isNew: false,
     },
-  ];
 
-  const FeaturedJewelleryProducts = [
     {
       id: "4",
       image: "/JWJSET1.webp",
@@ -31,38 +34,23 @@ export default function Index() {
       image: "/JWJSET2.webp",
       isNew: true,
     },
-    {
-      id: "6",
-      image: "/JWJSET3.webp",
-      isNew: false,
-    },
   ];
   return (
     <Layout>
       {/* Corousel */}
-      <div className="max-w-7xl mx-auto h-96 mt-20 bg-stone-300">
-        <img
-          src="/corousel_watch.webp"
-          height="384"
-          width="1280"
-          alt="corousel"
-        />
-      </div>
+      <img
+        src="/corousel_watch.webp"
+        height="510"
+        width="1520"
+        alt="corousel"
+      />
 
       {/* Featured Items */}
       <ItemContainer
-        title="Featured Items"
+        title="FEATURED PRODUCTS"
         height="379"
         width="252"
         product={FeaturedDressProducts}
-      />
-
-      {/* Jwellery Set */}
-      <ItemContainer
-        title="Jewellery Set"
-        height="256"
-        width="256"
-        product={FeaturedJewelleryProducts}
       />
     </Layout>
   );
