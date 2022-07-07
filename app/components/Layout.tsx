@@ -1,37 +1,16 @@
 import { Link } from "@remix-run/react";
-import React, { useState } from "react";
+import React from "react";
 import InstagramIcon from "./Icons/InstagramIcon";
 import FacebookIcon from "./Icons/FacebookIcon";
-import SearchIcon from "./Icons/SearchIcon";
 import Logo from "./Logo";
 import CartIcon from "./Icons/CartIcon";
-import MenuIcon from "./Icons/MenuIcon";
 import SideBar from "./SideBarMobile";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const headerLinks = [
-  {
-    name: "SHOP",
-    url: "wip",
-  },
-  {
-    name: "ABOUT",
-    url: "wip",
-  },
-  {
-    name: "CONTACT",
-    url: "wip",
-  },
-];
-
 const Layout: React.FC<Props> = ({ children }) => {
-  const [Menu, SetMenu] = useState(false);
-  const menuHandler = () => {
-    SetMenu(!Menu);
-  };
   return (
     <div className="bg-stone-50">
       {/* Brown Header */}
@@ -46,15 +25,17 @@ const Layout: React.FC<Props> = ({ children }) => {
       {/* Header */}
       <div className="h-16 lg:h-20 w-full lg:max-w-7xl lg:mx-auto text-stone-600 flex items-center justify-between px-4 lg:px-0">
         <Logo size="large" />
-        <div className="md:hidden" onClick={menuHandler}>
-          <MenuIcon />
-          {Menu && (
-            <div>
-              <SideBar menuHandler={menuHandler} />
-            </div>
-          )}
+
+        {/* Mobile view */}
+        <div className="md:hidden">
+          <SideBar />
         </div>
+
+        {/* laptop view */}
         <div className="hidden text-xs md:text-base md:flex items-center justify-center">
+          <Link to="wip">
+            <p className="ml-8">DASHBOARD</p>
+          </Link>
           <Link to="wip">
             <p className="ml-8">LOGIN</p>
           </Link>
@@ -72,11 +53,11 @@ const Layout: React.FC<Props> = ({ children }) => {
 
       {/* Footer */}
       <div className="h-70 lg:h-74 w-full bg-stone-600 mt-10 p-4 md:p-0 text-stone-300">
-        <div className="h-full lg:max-w-7xl lg:mx-auto flex flex-col items-center lg:flex-row text-xl lg:text-4xl">
+        <div className="h-full lg:max-w-7xl lg:mx-auto flex flex-col items-center md:justify-between lg:flex-row text-xl lg:text-3xl">
           <div className="h-full md:w-4/12 flex items-center justify-center">
-            <Logo size="large" />
+            <Logo size="xlarge" />
           </div>
-          <div className="h-full w-4/12 py-8 flex flex-col items-center">
+          <div className="h-full py-8 flex flex-col items-center">
             <p className="mb-5 underline lg:no-underline">Reach out to us</p>
             <div className="flex justify-between w-16">
               <a href="https://instagram.com/mihiirrrrrr" target="_blank">

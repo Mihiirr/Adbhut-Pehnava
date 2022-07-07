@@ -28,7 +28,7 @@ const ItemContainer: React.FC<Props> = (props) => {
           <Button>SHOW ALL PRODUCTS</Button>
         </Link>
       </div>
-      <div className="grid grid-cols-3 lg:grid-cols-4 gap-x-1 lg:gap-x-24 gap-y-10 mt-10 text-center">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-10 lg:gap-x-24 gap-y-10 mt-10 text-center">
         {props.product.map((items) => (
           <Link to={items.id} key={items.id}>
             <div className="h-48 w-32 lg:h-96 lg:w-64 flex items-center">

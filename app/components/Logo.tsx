@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 import React from "react";
 
-type ButtonSizes = "large" | "medium" | "small";
+type ButtonSizes = "xlarge" | "large" | "medium" | "small";
 
 type Props = {
   size?: ButtonSizes;
@@ -10,6 +10,10 @@ type Props = {
 const SizeVariantStyles: {
   [size in ButtonSizes]: Record<string, string>;
 } = {
+  xlarge: {
+    text: "text-6xl lg:text-7xl",
+    font: "font-logo",
+  },
   large: {
     text: "text-4xl lg:text-5xl",
     font: "font-logo",

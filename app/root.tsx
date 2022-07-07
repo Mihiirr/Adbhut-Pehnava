@@ -30,7 +30,7 @@ export const meta: MetaFunction = () => {
   const description = `Welcome to Fshion World!`;
   return {
     charset: "utf-8",
-    title: "New Remix App",
+    title: "Glammygirl",
     viewport: "width=device-width,initial-scale=1",
     keywords: "Fashion,World, Shopping",
     "twitter:image": "https://remix-jokes.lol/social.png",
