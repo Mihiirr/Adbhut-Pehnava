@@ -1,10 +1,12 @@
 import { Link } from "@remix-run/react";
-import React from "react";
+import React, { useState } from "react";
 import InstagramIcon from "./Icons/InstagramIcon";
 import FacebookIcon from "./Icons/FacebookIcon";
 import SearchIcon from "./Icons/SearchIcon";
 import Logo from "./Logo";
 import CartIcon from "./Icons/CartIcon";
+import MenuIcon from "./Icons/MenuIcon";
+import SideBar from "./SideBarMobile";
 
 type Props = {
   children: React.ReactNode;
@@ -26,36 +28,42 @@ const headerLinks = [
 ];
 
 const Layout: React.FC<Props> = ({ children }) => {
+  const [Menu, SetMenu] = useState(true);
+  const menuHandler = () => {
+    SetMenu(!Menu);
+  };
   return (
     <div className="bg-stone-50">
-      {/* Login Header */}
+      {/* Brown Header */}
       <div className="h-7 md:h-10 w-full bg-stone-600 text-stone-300 ">
-        <div className="h-full md:max-w-7xl lg:mx-auto px-4 md:px-0 text-sm md:text-base flex items-center justify-between">
-          <SearchIcon />
-          <div className="flex items-center">
-            <p>
-              <Link to="wip">Login</Link> <span className="mx-4">|</span>
-              <Link to="wip">Create account</Link>
-            </p>
-            <div className="h-5 md:h-7 w-8 md:w-12 ml-4 md:border-2 md:border-stone-300 flex items-center justify-around rounded-sm">
-              <CartIcon />
-              <p>0</p>
-            </div>
-          </div>
+        <div className="h-full md:max-w-7xl lg:mx-auto px-4 md:px-0 text-sm md:text-base flex items-center justify-center">
+          <p>
+            Free shipping for orders over{" "}
+            <span className="text-stone-200">₹2000</span>
+          </p>
         </div>
       </div>
       {/* Header */}
       <div className="h-16 lg:h-20 w-full lg:max-w-7xl lg:mx-auto text-stone-600 flex items-center justify-between px-4 lg:px-0">
-        <div className="hidden lg:w-4/12">
-          <SearchIcon className="rounded-md hover:cursor-pointer" />
-        </div>
         <Logo size="large" />
-        <div className="w-4/12 text-xs md:text-base flex justify-end">
-          {headerLinks.map((val) => (
-            <Link to={val.url} key={val.name}>
-              <p className="ml-8">{val.name}</p>
-            </Link>
-          ))}
+        <div className="md:hidden" onClick={menuHandler}>
+          <MenuIcon />
+          {Menu && (
+            <div>
+              <SideBar menuHandler={menuHandler} />
+            </div>
+          )}
+        </div>
+        <div className="hidden text-xs md:text-base md:flex items-center justify-center">
+          <Link to="wip">
+            <p className="ml-8">LOGIN</p>
+          </Link>
+          <Link to="wip">
+            <div className="h-10 px-2 ml-8 rounded-sm flex items-center justify-center border-2 border-stone-300">
+              <CartIcon />
+              <p>0</p>
+            </div>
+          </Link>
         </div>
       </div>
 
@@ -87,9 +95,10 @@ const Layout: React.FC<Props> = ({ children }) => {
                 Vaishnavi Signature, No. 78/9, Outer Ring Road, Bellandur,
                 Varthur Hobli, Bengaluru-560103, Karnataka, India
               </p>
-              <p>Email address:</p>
-              <p>help@gmail.com</p>
-              <p>© 2022 FashionAndWorld.com</p>
+              <p>
+                <strong>Email address:</strong> help@gmail.com
+              </p>
+              <p>© 2022 glammygirl.com</p>
             </div>
           </div>
         </div>

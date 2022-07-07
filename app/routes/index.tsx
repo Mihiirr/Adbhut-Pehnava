@@ -38,7 +38,7 @@ export default function Index() {
   return (
     <Layout>
       {/* Corousel */}
-      <div className="hidden md:flex">
+      <div>
         <img
           src="/corousel_watch.webp"
           height="510"

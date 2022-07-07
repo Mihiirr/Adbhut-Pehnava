@@ -7,15 +7,15 @@ const CartIcon = (props: React.SVGProps<SVGSVGElement>) => {
       focusable="false"
       role="presentation"
       viewBox="0 0 64 64"
-      height="20"
-      width="20"
+      height="24"
+      width="24"
       fillOpacity="1"
-      stroke="white"
+      stroke="black"
       strokeWidth="1.5"
       {...props}
     >
       <path
-        fill="#D6D3D1"
+        fill="none"
         d="M14 17.44h46.79l-7.94 25.61H20.96l-9.65-35.1H3"
       ></path>
       <circle cx="27" cy="53" r="2"></circle>

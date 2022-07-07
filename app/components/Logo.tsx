@@ -12,15 +12,15 @@ const SizeVariantStyles: {
 } = {
   large: {
     text: "text-4xl lg:text-5xl",
-    font: "font-cursive",
+    font: "font-logo",
   },
   medium: {
     text: "text-xl lg:text-3xl",
-    font: "font-cursive",
+    font: "font-logo",
   },
   small: {
     text: "text-lg lg:text-2xl",
-    font: "font-cursive",
+    font: "font-logo",
   },
 };
 

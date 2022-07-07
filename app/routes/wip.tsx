@@ -6,10 +6,11 @@ type Props = {};
 const Wip = (props: Props) => {
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-stone-50">
-      <div className="h-30 md:w-3/4 flex flex-col md:flex-row items-center justify-center text-3xl lg:text-5xl">
-        <p className="text-stone-600">YOU CAUGHT US!</p>
-        <div className="hidden md:flex h-full text-stone-300 lg:ml-6 border-x-2 border-stone-300"></div>
-        <div className="text-center md:ml-6">
+      <div className="h-30 md:w-7/12 md:px-5 flex flex-col md:flex-row text-3xl lg:text-5xl">
+        <div className="h-full md:w-3/6 flex items-center justify-center md:border-r-2 md:border-stone-300 text-stone-600">
+          <strong>YOU CAUGHT US!</strong>
+        </div>
+        <div className="h-full md:w-3/6 flex flex-col items-center justify-center">
           <p>Work in progress</p>
           <p className="text-lg text-stone-600 md:mt-2">
             Please check the page again after some time.
