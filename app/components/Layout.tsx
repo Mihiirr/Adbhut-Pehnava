@@ -28,7 +28,7 @@ const headerLinks = [
 ];
 
 const Layout: React.FC<Props> = ({ children }) => {
-  const [Menu, SetMenu] = useState(true);
+  const [Menu, SetMenu] = useState(false);
   const menuHandler = () => {
     SetMenu(!Menu);
   };
