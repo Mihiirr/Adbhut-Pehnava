@@ -118,9 +118,10 @@ export function CatchBoundary() {
   return (
     <Document title={`${caught.status} ${caught.statusText}`}>
       <div className="h-screen flex flex-col items-center justify-center p-20 bg-stone-50">
-        <p className="text-5xl mb-6">
+        <p className="text-5xl">
           {caught.status} {caught.statusText}!
         </p>
+        <p className="mb-6">{message}</p>
         <Link to="/">
           <Button variant="secondary">Home Page</Button>
         </Link>

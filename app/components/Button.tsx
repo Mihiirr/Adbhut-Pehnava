@@ -3,7 +3,7 @@ import React from "react";
 const variantProps = {
   primary: {
     className:
-      "h-full lg:h-10 w-full p-2 border-2 rounded-sm text-xs lg:text-xl text-stone-600 flex items-center justify-center border-stone-600 bg-white hover:bg-stone-100 active:bg-stone-200",
+      "h-full lg:h-10 w-full p-2 border-2 rounded-sm text-xs lg:text-base text-stone-600 flex items-center justify-center border-stone-600 bg-white hover:bg-stone-100 active:bg-stone-200",
   },
   secondary: {
     className:

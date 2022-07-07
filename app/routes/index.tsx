@@ -38,12 +38,14 @@ export default function Index() {
   return (
     <Layout>
       {/* Corousel */}
-      <img
-        src="/corousel_watch.webp"
-        height="510"
-        width="1520"
-        alt="corousel"
-      />
+      <div className="hidden md:flex">
+        <img
+          src="/corousel_watch.webp"
+          height="510"
+          width="1520"
+          alt="corousel"
+        />
+      </div>
 
       {/* Featured Items */}
       <ItemContainer

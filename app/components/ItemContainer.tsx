@@ -16,7 +16,7 @@ type Props = {
 const ItemContainer: React.FC<Props> = (props) => {
   return (
     <div className="h-auto lg:max-w-7xl mt-6 lg:mt-20 lg:mx-auto flex flex-col items-center">
-      <div className="h-10 px-4 lg:h-20 w-full flex items-end justify-between">
+      <div className="h-10 px-4 lg:px-0 lg:h-20 w-full flex items-end justify-between">
         <div className="h-2/4 w-2/12 lg:w-2/5 border-t-2 border-stone-600"></div>
         <div className="h-full w-7/12 flex items-center justify-center text-base lg:text-xl text-stone-600">
           {props.title}

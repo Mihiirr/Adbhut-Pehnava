@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["'Lora' 'Smooch'", ...defaultTheme.fontFamily.sans],
-        cursive: ["'The Nautigal', cursive"],
+        sans: ["'Lora' serif", ...defaultTheme.fontFamily.sans],
+        cursive: ["'The Nautigal', cursive "],
       },
     },
   },
