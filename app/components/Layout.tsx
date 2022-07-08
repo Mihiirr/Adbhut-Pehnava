@@ -33,13 +33,13 @@ const Layout: React.FC<Props> = ({ children }) => {
 
         {/* laptop view */}
         <div className="hidden text-xs md:text-base md:flex items-center justify-center">
-          <Link to="wip">
+          <Link to="/wip">
             <p className="ml-8">DASHBOARD</p>
           </Link>
-          <Link to="wip">
+          <Link to="/wip">
             <p className="ml-8">LOGIN</p>
           </Link>
-          <Link to="wip">
+          <Link to="/wip">
             <div className="h-10 px-2 ml-8 rounded-sm flex items-center justify-center border-2 border-stone-300">
               <CartIcon />
               <p>0</p>

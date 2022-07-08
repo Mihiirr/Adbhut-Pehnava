@@ -1,7 +1,8 @@
-import { MetaFunction } from "@remix-run/node";
-import { Link, useCatch, useParams } from "@remix-run/react";
+import { json, LoaderFunction, MetaFunction } from "@remix-run/node";
+import { Link, useCatch, useLoaderData, useParams } from "@remix-run/react";
 import Layout from "~/components/Layout";
 import Button from "~/components/Button";
+import { getUnioqueProducts } from "~/services/product.server";
 
 export const meta: MetaFunction = () => {
   return {
@@ -10,36 +11,74 @@ export const meta: MetaFunction = () => {
   };
 };
 
+type LoaderData = {
+  product: {
+    id: string;
+    name: string;
+    category: string;
+    image: string;
+    price: number;
+    inStock: number;
+    isNew: boolean;
+    isFeatured: boolean;
+  };
+};
+
+export const loader: LoaderFunction = async ({ params }) => {
+  const productId = await params.productid;
+  if (!productId) {
+    throw new Response("Product Not found.", {
+      status: 404,
+    });
+  }
+  const product = await getUnioqueProducts(productId);
+  if (!product) {
+    throw new Response("Product Not found.", {
+      status: 404,
+    });
+  }
+  const data: LoaderData = {
+    product,
+  };
+  return json(data);
+};
+
 const Productdetail = () => {
+  const data = useLoaderData();
   return (
     <Layout>
       <div className="flex flex-col items-center bg-stone-100">
         <div className="h-full lg:h-4/5 w-full flex justify-center">
-          <img src={`/dress1.jpg`} height="600" width="400" />
+          <img src={data.product.image} height="600" width="400" />
         </div>
         <div className="h-full w-full lg:w-4/5 bg-white p-10 flex flex-col items-center rounded-t-[70px] lg:rounded-t-3xl">
           <div className="w-full lg:w-2/5 lg:text-3xl text-2xl">
             <div className="flex w-full justify-between">
-              <p>Peace White</p>
-              <p>Rs. 600</p>
+              <p>{data.product.name}</p>
+              <p>Rs. {data.product.price}</p>
             </div>
-            <p className="text-xl text-gray-500 mb-5">peace white</p>
-
-            <div className="mb-6 flex items-center">
-              <label htmlFor="size-input" className="text-3xl">
-                Size:
-              </label>
-              <select
-                id="size-input"
-                name="size"
-                className="text-xl ml-2 border-2 border-black rounded"
-              >
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-              </select>
-            </div>
+            <p className="text-xl text-gray-500 mb-5">
+              {data.product.category}
+            </p>
+            {data.product.category === "dress" && (
+              <form>
+                <div className="mb-6 flex items-center">
+                  <label htmlFor="size-input" className="text-3xl">
+                    Size:
+                  </label>
+                  <select
+                    id="size-input"
+                    name="size"
+                    className="text-xl ml-2 border-2 border-black rounded"
+                  >
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                  </select>
+                </div>
+              </form>
+            )}
             <Link to="/wip">
               <Button type="submit" variant="secondary">
                 Add to cart
