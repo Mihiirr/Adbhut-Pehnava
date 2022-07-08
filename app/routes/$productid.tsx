@@ -1,10 +1,5 @@
-import {
-  ActionFunction,
-  json,
-  LoaderFunction,
-  MetaFunction,
-} from "@remix-run/node";
-import { Link, useCatch, useLoaderData, useParams } from "@remix-run/react";
+import { MetaFunction } from "@remix-run/node";
+import { Link, useCatch, useParams } from "@remix-run/react";
 import Layout from "~/components/Layout";
 import Button from "~/components/Button";
 
