@@ -21,7 +21,6 @@ const Productdetail = () => {
       <div className="flex flex-col items-center bg-stone-100">
         <div className="h-full lg:h-4/5 w-full flex justify-center">
           <img src={`/dress1.jpg`} height="600" width="400" />
-          {/* <div className="absolute  h-5 text-3xl lg:text-sm">New Arrival</div> */}
         </div>
         <div className="h-full w-full lg:w-4/5 bg-white p-10 flex flex-col items-center rounded-t-[70px] lg:rounded-t-3xl">
           <div className="w-full lg:w-2/5 lg:text-3xl text-2xl">
@@ -46,26 +45,11 @@ const Productdetail = () => {
                 <option value="XL">XL</option>
               </select>
             </div>
-
-            {/* <div>
-              <div>Size</div>
-              <div className="mb-5 flex">
-                <div className="h-12 w-12 lg:h-8 lg:w-8 mr-2 rounded-full bg-black text-white flex items-center justify-center lg:text-lg text-2xl">
-                  S
-                </div>
-                <div className="h-12 w-12 lg:h-8 lg:w-8 mr-2 rounded-full bg-black text-white flex items-center justify-center lg:text-lg text-2xl">
-                  M
-                </div>
-                <div className="h-12 w-12 lg:h-8 lg:w-8 rounded-full bg-black text-white flex items-center justify-center lg:text-lg text-2xl">
-                  XL
-                </div>
-              </div>
-            </div> */}
-            <form method="post">
+            <Link to="wip">
               <Button type="submit" variant="secondary">
                 Add to cart
               </Button>
-            </form>
+            </Link>
           </div>
         </div>
       </div>
