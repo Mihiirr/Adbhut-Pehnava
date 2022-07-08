@@ -27,24 +27,24 @@ export function links() {
 }
 
 export const meta: MetaFunction = () => {
-  const description = `Welcome to Fshion World!`;
+  const description = `Welcome to Fashion World!`;
   return {
     charset: "utf-8",
     title: "Glammygirl",
     viewport: "width=device-width,initial-scale=1",
-    keywords: "Fashion,World, Shopping",
+    keywords: "Fashion,World,Glammygirl,Shopping",
     "twitter:image": "https://remix-jokes.lol/social.png",
     "twitter:card": "summary_large_image",
-    "twitter:creator": "@remix_run",
-    "twitter:site": "@remix_run",
-    "twitter:title": "Fashion & World",
+    "twitter:creator": "mihir",
+    "twitter:site": "glammygirl",
+    "twitter:title": "Glammy Girl",
     "twitter:description": description,
   };
 };
 
 function Document({
   children,
-  title = "Fashion & World",
+  title = "Glammygirl",
 }: {
   children: React.ReactNode;
   title?: string;
