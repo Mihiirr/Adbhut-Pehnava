@@ -2,7 +2,7 @@ import { json, LoaderFunction, MetaFunction } from "@remix-run/node";
 import { Link, useCatch, useLoaderData, useParams } from "@remix-run/react";
 import Layout from "~/components/Layout";
 import Button from "~/components/Button";
-import { getUnioqueProducts } from "~/services/product.server";
+import { getUniqueProducts } from "~/services/product.server";
 
 export const meta: MetaFunction = () => {
   return {
@@ -31,7 +31,7 @@ export const loader: LoaderFunction = async ({ params }) => {
       status: 404,
     });
   }
-  const product = await getUnioqueProducts(productId);
+  const product = await getUniqueProducts(productId);
   if (!product) {
     throw new Response("Product Not found.", {
       status: 404,

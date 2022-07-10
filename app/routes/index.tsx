@@ -25,7 +25,7 @@ export const loader: LoaderFunction = async () => {
 };
 
 export default function Index() {
-  const data = useLoaderData();
+  const data = useLoaderData<LoaderData>();
   return (
     <Layout>
       {/* Corousel */}

@@ -26,7 +26,7 @@ const ItemContainer: React.FC<Props> = (props) => {
         <div className="h-2/4 w-2/12 lg:w-2/5 border-t-2 border-stone-600"></div>
       </div>
       <div className="w-50 h-8 bg-green-400">
-        <Link to="/wip">
+        <Link to="/collections">
           <Button>SHOW ALL PRODUCTS</Button>
         </Link>
       </div>

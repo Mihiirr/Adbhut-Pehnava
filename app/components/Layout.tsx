@@ -23,7 +23,7 @@ const Layout: React.FC<Props> = ({ children }) => {
         </div>
       </div>
       {/* Header */}
-      <div className="h-16 lg:h-20 w-full lg:max-w-7xl lg:mx-auto text-stone-600 flex items-center justify-between px-4 lg:px-0">
+      <div className="h-16 lg:h-20 w-full lg:max-w-7xl lg:mx-auto text-stone-600 flex items-center justify-between px-4 lg:px-0 border-b-2 border-stone-300">
         <Logo size="large" />
 
         {/* Mobile view */}

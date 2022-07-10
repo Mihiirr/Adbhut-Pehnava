@@ -2,7 +2,7 @@ export function getAllProducts() {
   return [
     {
       id: "1",
-      name: "Kurti",
+      name: "White-dress",
       category: "dress",
       image: "/dress1.jpg",
       price: 799,
@@ -22,7 +22,7 @@ export function getAllProducts() {
     },
     {
       id: "3",
-      name: "Surti",
+      name: "Black-dress",
       category: "dress",
       image: "/dress3.jpg",
       price: 999,
@@ -88,6 +88,12 @@ export async function getAllFeaturedProducts() {
   const featuredProduct = await product.filter(
     (item) => item.isFeatured === true
   );
+  return featuredProduct;
+}
+
+export async function getUniqueProducts(id: string) {
+  const product = await getAllProducts();
+  const featuredProduct = await product.find((item) => item.id === id);
   return featuredProduct;
 }
 
