@@ -86,7 +86,7 @@ const Collection = (props: Props) => {
               <div className="text-center">
                 {browseLinks.map((item) => (
                   <Link to={item.url} key={item.name}>
-                    <p>{item.name}</p>
+                    <div onClick={collectionsMenuHandler}>{item.name}</div>
                   </Link>
                 ))}
               </div>

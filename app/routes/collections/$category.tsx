@@ -35,10 +35,10 @@ export const loader: LoaderFunction = async ({ params }) => {
 const Category = (props: Props) => {
   const data = useLoaderData<LoaderData>();
   return (
-    <div className="h-full w-full grid grid-cols-2 lg:grid-cols-3 gap-x-10 lg:gap-x-19 mt-10 text-center">
+    <div className="h-full w-full grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-10 md:gap-x-19 mt-10 text-center">
       {data.map((item) => (
         <Link to={`/${item.id}`} key={item.id}>
-          <div className="h-48 w-32 lg:h-96 lg:w-64 flex items-center">
+          <div className="flex items-center">
             <img
               src={`${item.image}`}
               height="510"
