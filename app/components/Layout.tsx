@@ -5,7 +5,6 @@ import FacebookIcon from "./Icons/FacebookIcon";
 import Logo from "./Logo";
 import CartIcon from "./Icons/CartIcon";
 import SideBar from "./SideBarMobile";
-import { collectionsMenu } from "~/menus";
 
 type Props = {
   children: React.ReactNode;
@@ -16,20 +15,19 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
   return (
     <div className="bg-stone-50">
       {/* Brown Header */}
-      {brownTitle && (
-        <div className="h-7 md:h-10 w-full bg-stone-600 text-stone-300 ">
-          <div className="h-full md:max-w-7xl lg:mx-auto px-4 md:px-0 text-sm md:text-base flex items-center justify-center">
-            <p>{brownTitle}</p>
-          </div>
+      <div className="h-7 md:h-10 w-full bg-stone-600 text-stone-300 ">
+        <div className="h-full md:max-w-7xl lg:mx-auto px-4 md:px-0 text-sm md:text-base flex items-center justify-center">
+          {brownTitle ? <p>{brownTitle}</p> : <p>Wellcome to Glammy Girl</p>}
         </div>
-      )}
+      </div>
+
       {/* Header */}
       <div className="h-16 lg:h-20 w-full lg:max-w-7xl lg:mx-auto text-stone-600 flex items-center justify-between px-4 lg:px-0 border-b-2 border-stone-300">
         <Logo size="large" />
 
         {/* Mobile view */}
         <div className="md:hidden">
-          <SideBar sideBarMenu={collectionsMenu} />
+          <SideBar />
         </div>
 
         {/* laptop view */}
@@ -37,12 +35,12 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
           <Link to="/wip">
             <p className="ml-8">DASHBOARD</p>
           </Link>
-          <Link to="/wip">
+          <Link to="/account/login">
             <p className="ml-8">LOGIN</p>
           </Link>
-          <Link to="/wip">
+          <Link to="/cart">
             <div className="h-10 px-2 ml-8 rounded-sm flex items-center justify-center border-2 border-stone-300">
-              <CartIcon />
+              <CartIcon height="24" width="24" fill="none" stroke="black" />
               <p>0</p>
             </div>
           </Link>
@@ -61,7 +59,7 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
           <div className="h-full py-8 flex flex-col items-center">
             <p className="mb-5 underline lg:no-underline">Reach out to us</p>
             <div className="flex justify-between w-16">
-              <a href="https://instagram.com/mihiirrrrrr" target="_blank">
+              <a href="https://instagram.com/prachi__patel94" target="_blank">
                 <InstagramIcon
                   className="hover:cursor-pointer"
                   stroke="white"

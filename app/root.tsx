@@ -67,6 +67,7 @@ function Document({
 export default function App() {
   return (
     <Document>
+      <Meta />
       <Outlet />
       <ScrollRestoration />
       <Scripts />

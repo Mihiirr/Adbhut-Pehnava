@@ -4,10 +4,20 @@ import Layout from "~/components/Layout";
 import Button from "~/components/Button";
 import { getUniqueProducts } from "~/services/product.server";
 
-export const meta: MetaFunction = () => {
+export const meta: MetaFunction = ({
+  data,
+}: {
+  data: LoaderData | undefined;
+}) => {
+  if (!data) {
+    return {
+      title: "No product",
+      description: "No product found",
+    };
+  }
   return {
-    title: `prodID`,
-    description: `Enjoy the ProdId joke and much more`,
+    title: `${data.product.name} - Glammygirl`,
+    description: `Enjoy the "${data.product.name}" joke and much more`,
   };
 };
 

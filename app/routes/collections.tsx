@@ -1,9 +1,26 @@
+import { MetaFunction } from "@remix-run/node";
 import { Link, Outlet } from "@remix-run/react";
 import { useState } from "react";
 import Button from "~/components/Button";
 import DownArrowIcon from "~/components/Icons/DownArrowIcon";
 import Layout from "~/components/Layout";
 import { collectionsMenu } from "~/menus";
+
+export const meta: MetaFunction = () => {
+  const description = `Welcome to Fashion World!`;
+  return {
+    charset: "utf-8",
+    title: "Collections - Glammygirl",
+    viewport: "width=device-width,initial-scale=1",
+    keywords: "Fashion,World,Glammygirl,Shopping",
+    "twitter:image": "https://remix-jokes.lol/social.png",
+    "twitter:card": "summary_large_image",
+    "twitter:creator": "mihir",
+    "twitter:site": "glammygirl",
+    "twitter:title": "Glammy Girl",
+    "twitter:description": description,
+  };
+};
 
 const Collection = () => {
   const [IscollectionMenuOpen, SetIscollectionMenuOpen] = useState(false);

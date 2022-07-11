@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import { useState } from "react";
 import { collectionsMenu } from "~/menus";
+import CartIcon from "./Icons/CartIcon";
 import CrossIcon from "./Icons/CrossIcon";
 import DownArrowIcon from "./Icons/DownArrowIcon";
 import MenuIcon from "./Icons/MenuIcon";
@@ -33,9 +34,24 @@ const SideBar = () => {
         } ease-in-out duration-200`}
       >
         <div className="mt-16 w-full text-xl">
-          <p className="h-10 flex items-center w-full border-b-2 border-stone-300">
-            DASHBOARD
-          </p>
+          <Link to="/wip">
+            <p className="h-10 flex items-center w-full border-b-2 border-stone-300">
+              DASHBOARD
+            </p>
+          </Link>
+          <Link to="/cart">
+            <div className="h-10 flex items-center w-full border-b-2 border-stone-300">
+              <p>CART</p>
+              <CartIcon
+                height="24"
+                width="24"
+                fill="#ffffff"
+                stroke="white"
+                className="ml-2"
+              />
+              <p>0</p>
+            </div>
+          </Link>
           <div
             onClick={showMenuHandler}
             className={`w-full h-10 flex items-center ${
@@ -62,14 +78,11 @@ const SideBar = () => {
               ))}
             </div>
           )}
-          <p className="h-10 flex items-center w-full border-b-2 border-stone-300">
-            ABOUT
-          </p>
           <div className="mt-5">
-            <Link to="wip">
+            <Link to="/wip">
               <p className="h-8 flex items-center w-full">LOGIN</p>
             </Link>
-            <Link to="wip">
+            <Link to="/wip">
               <p className="h-8 flex items-center w-full">CREATE ACCOUNT</p>
             </Link>
           </div>
