@@ -79,10 +79,10 @@ const SideBar = () => {
             </div>
           )}
           <div className="mt-5">
-            <Link to="/wip">
+            <Link to="/account/login">
               <p className="h-8 flex items-center w-full">LOGIN</p>
             </Link>
-            <Link to="/wip">
+            <Link to="/account/register">
               <p className="h-8 flex items-center w-full">CREATE ACCOUNT</p>
             </Link>
           </div>
