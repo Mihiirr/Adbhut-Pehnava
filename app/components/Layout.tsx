@@ -5,30 +5,31 @@ import FacebookIcon from "./Icons/FacebookIcon";
 import Logo from "./Logo";
 import CartIcon from "./Icons/CartIcon";
 import SideBar from "./SideBarMobile";
+import { collectionsMenu } from "~/menus";
 
 type Props = {
   children: React.ReactNode;
+  brownTitle?: string;
 };
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout: React.FC<Props> = ({ children, brownTitle }) => {
   return (
     <div className="bg-stone-50">
       {/* Brown Header */}
-      <div className="h-7 md:h-10 w-full bg-stone-600 text-stone-300 ">
-        <div className="h-full md:max-w-7xl lg:mx-auto px-4 md:px-0 text-sm md:text-base flex items-center justify-center">
-          <p>
-            Free shipping for orders over{" "}
-            <span className="text-stone-200">₹2000</span>
-          </p>
+      {brownTitle && (
+        <div className="h-7 md:h-10 w-full bg-stone-600 text-stone-300 ">
+          <div className="h-full md:max-w-7xl lg:mx-auto px-4 md:px-0 text-sm md:text-base flex items-center justify-center">
+            <p>{brownTitle}</p>
+          </div>
         </div>
-      </div>
+      )}
       {/* Header */}
       <div className="h-16 lg:h-20 w-full lg:max-w-7xl lg:mx-auto text-stone-600 flex items-center justify-between px-4 lg:px-0 border-b-2 border-stone-300">
         <Logo size="large" />
 
         {/* Mobile view */}
         <div className="md:hidden">
-          <SideBar />
+          <SideBar sideBarMenu={collectionsMenu} />
         </div>
 
         {/* laptop view */}

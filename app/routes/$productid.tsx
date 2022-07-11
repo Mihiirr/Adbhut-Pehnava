@@ -46,7 +46,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 const Productdetail = () => {
   const data = useLoaderData();
   return (
-    <Layout>
+    <Layout brownTitle="Free shipping for orders over ₹2000">
       <div className="flex flex-col items-center bg-stone-100">
         <div className="h-full lg:h-4/5 w-full flex justify-center">
           <img src={data.product.image} height="600" width="400" />
