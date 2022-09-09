@@ -16,7 +16,7 @@ export const meta: MetaFunction = ({
     };
   }
   return {
-    title: `${data.product.name} - Glammygirl`,
+    title: `${data.product.name} - Adbhut Pehnava`,
     description: `Enjoy the "${data.product.name}" joke and much more`,
   };
 };

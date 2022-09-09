@@ -4,7 +4,7 @@ import Layout from "~/components/Layout";
 
 export const meta: MetaFunction = () => {
   return {
-    title: `Shopping cart - Glammygirl`,
+    title: `Shopping cart - Adbhut Pehnava`,
   };
 };
 

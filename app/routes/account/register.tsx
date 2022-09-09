@@ -5,7 +5,7 @@ import Layout from "~/components/Layout";
 
 export const meta: MetaFunction = () => {
   return {
-    title: `Register - Glammygirl`,
+    title: `Register - Adbhut Pehnava`,
   };
 };
 

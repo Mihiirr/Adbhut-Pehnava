@@ -10,14 +10,14 @@ export const meta: MetaFunction = () => {
   const description = `Welcome to Fashion World!`;
   return {
     charset: "utf-8",
-    title: "Collections - Glammygirl",
+    title: "Collections - Adbhut Pehnava",
     viewport: "width=device-width,initial-scale=1",
-    keywords: "Fashion,World,Glammygirl,Shopping",
+    keywords: "Fashion,World,adbhutpehnava,Shopping",
     "twitter:image": "https://remix-jokes.lol/social.png",
     "twitter:card": "summary_large_image",
     "twitter:creator": "mihir",
-    "twitter:site": "glammygirl",
-    "twitter:title": "Glammy Girl",
+    "twitter:site": "adbhutpehnava",
+    "twitter:title": "Adbhut Pehnava",
     "twitter:description": description,
   };
 };

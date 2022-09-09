@@ -17,7 +17,7 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
       {/* Brown Header */}
       <div className="h-7 md:h-10 w-full bg-stone-600 text-stone-300 ">
         <div className="h-full md:max-w-7xl lg:mx-auto px-4 md:px-0 text-sm md:text-base flex items-center justify-center">
-          {brownTitle ? <p>{brownTitle}</p> : <p>Wellcome to Glammy Girl</p>}
+          {brownTitle ? <p>{brownTitle}</p> : <p>Wellcome to Adbhut Pehnava</p>}
         </div>
       </div>
 
@@ -78,7 +78,7 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
               <p>
                 <strong>Email address:</strong> help@gmail.com
               </p>
-              <p>© 2022 glammygirl.com</p>
+              <p>© 2022 adbhutpehnava.com</p>
             </div>
           </div>
         </div>
