@@ -72,8 +72,8 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
             <p className="mb-5 underline lg:no-underline">Contact Us</p>
             <div className="w-full text-base lg:text-lg">
               <p>
-                Vaishnavi Signature, No. 78/9, Outer Ring Road, Bellandur,
-                Varthur Hobli, Bengaluru-560103, Karnataka, India
+                Vaishnavi Signature, No. 78/9, Outer Ring Road, Bellandurev,
+                arthur Hobli, Vadodara-674467, Gujarat, India
               </p>
               <p>
                 <strong>Email address:</strong> help@gmail.com
