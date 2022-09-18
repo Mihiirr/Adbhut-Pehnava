@@ -59,7 +59,7 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
           <div className="h-full py-8 flex flex-col items-center">
             <p className="mb-5 underline lg:no-underline">Reach out to us</p>
             <div className="flex justify-between w-16">
-              <a href="https://instagram.com/prachi__patel94" target="_blank">
+              <a href="https://instagram.com/adbhutpehnava" target="_blank">
                 <InstagramIcon
                   className="hover:cursor-pointer"
                   stroke="white"

@@ -96,9 +96,3 @@ export async function getUniqueProducts(id: string) {
   const featuredProduct = await product.find((item) => item.id === id);
   return featuredProduct;
 }
-
-export async function getUnioqueProducts(id: string) {
-  const product = await getAllProducts();
-  const featuredProduct = await product.find((item) => item.id === id);
-  return featuredProduct;
-}
