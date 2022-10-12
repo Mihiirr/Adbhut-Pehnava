@@ -32,7 +32,7 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
 
         {/* laptop view */}
         <div className="hidden text-xs md:text-base md:flex items-center justify-center">
-          <Link to="/wip">
+          <Link to="/admin/dashboard">
             <p className="ml-8">DASHBOARD</p>
           </Link>
           <Link to="/account/login">
