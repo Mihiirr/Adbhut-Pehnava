@@ -57,7 +57,7 @@ const Collection = () => {
                   <select
                     id="sortby-input"
                     name="size"
-                    className="text-base border-2 ml-2 border-black rounded"
+                    className="text-base border-2 ml-2 rounded"
                   >
                     <option value="all">ALL</option>
                     <option value="featured">FEATURED</option>

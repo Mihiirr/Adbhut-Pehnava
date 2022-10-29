@@ -53,7 +53,7 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
       {/* Footer */}
       <div className="h-70 lg:h-74 w-full bg-stone-600 mt-10 p-4 md:p-0 text-stone-300">
         <div className="h-full lg:max-w-7xl lg:mx-auto flex flex-col items-center md:justify-between lg:flex-row text-xl lg:text-3xl">
-          <div className="h-full md:w-4/12 flex items-center justify-center">
+          <div className="h-full flex items-center justify-center">
             <Logo size="xlarge" />
           </div>
           <div className="h-full py-8 flex flex-col items-center">

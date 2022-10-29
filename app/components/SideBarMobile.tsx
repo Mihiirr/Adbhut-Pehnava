@@ -34,7 +34,7 @@ const SideBar = () => {
         } ease-in-out duration-200`}
       >
         <div className="mt-16 w-full text-xl">
-          <Link to="/wip">
+          <Link to="/admin/dashboard">
             <p className="h-10 flex items-center w-full border-b-2 border-stone-300">
               DASHBOARD
             </p>
