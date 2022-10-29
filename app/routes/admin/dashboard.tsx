@@ -1,19 +1,19 @@
-import { json, LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+// import { json, LoaderFunction } from "@remix-run/node";
+// import { useLoaderData } from "@remix-run/react";
 import StaticsCard from "~/components/Admin/dashboard/StaticsCard";
 
-type LoaderData = {
-  totalStocks: number;
-  totalVarietyProduct: number;
-  totalUsers: number;
-  usersGroupBy: Array<{ role: string; _count: { id: number } }>;
-  netAmountOfTotalStock: number;
-};
+// type LoaderData = {
+//   totalStocks: number;
+//   totalVarietyProduct: number;
+//   totalUsers: number;
+//   usersGroupBy: Array<{ role: string; _count: { id: number } }>;
+//   netAmountOfTotalStock: number;
+// };
 
 const Dashboard = () => {
   return (
     <div className="max-w-7xl mx-auto mt-20">
-      <div className="mb-20 flex flex-wrap">
+      <div className="mb-20 flex flex-wrap items-center justify-center px-2">
         <StaticsCard
           title="Total Sale"
           amount="₹2000"
@@ -22,7 +22,7 @@ const Dashboard = () => {
         <StaticsCard
           title="Total Orders"
           amount="6"
-          description={`3-Pending, 3-Delivered`}
+          description={`3-Delivered, 3-Pending`}
         />
         <StaticsCard
           title="Total User"

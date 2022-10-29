@@ -7,11 +7,11 @@ const variantProps = {
   },
   secondary: {
     className:
-      "h-10 lg:h-10 w-full p-2 flex items-center justify-center bg-stone-600 text-stone-300 text-base lg:text-xl rounded-sm",
+      "h-10 lg:h-10 w-full p-2 flex items-center justify-center bg-stone-600 text-stone-200 text-base lg:text-xl rounded-sm",
   },
   danger: {
     className:
-      "h-20 lg:h-10 p-2 w-full flex items-center justify-center bg-red-500 text-white text-4xl lg:text-lg rounded-sm hover:bg-red-600 active:bg-red-700",
+      "h-10 lg:h-10 w-full p-2 flex items-center justify-center bg-red-600 text-white text-base lg:text-xl rounded-sm",
   },
 };
 

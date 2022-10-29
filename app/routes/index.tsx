@@ -29,7 +29,7 @@ export default function Index() {
   return (
     <Layout brownTitle="Free shipping for orders over ₹2000">
       {/* Corousel */}
-      <div>
+      <div className="flex items-center justify-center">
         <img
           src="/corousel_watch.webp"
           height="510"

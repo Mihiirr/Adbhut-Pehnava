@@ -20,6 +20,6 @@ export default Admin;
 export const meta: MetaFunction = () => {
   return {
     title: "Admin Panel",
-    description: `Wellcome to the admin panel of Fashion World`,
+    description: `Wellcome to the admin panel of Adbhut Pehnava`,
   };
 };
