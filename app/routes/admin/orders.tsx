@@ -35,6 +35,9 @@ const pendingOrders = [
 const Orders: React.FC<Props> = (props) => {
   return (
     <div className="max-w-7xl mx-auto">
+      <div className="flex items-center justify-center mt-10 text-2xl md:text-3xl text-stone-600">
+        <p>ORDERS</p>
+      </div>
       {/* Pending Delivery */}
       <DeliveryContainer
         title="Pending Delivery"

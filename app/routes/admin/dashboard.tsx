@@ -12,7 +12,10 @@ import StaticsCard from "~/components/Admin/dashboard/StaticsCard";
 
 const Dashboard = () => {
   return (
-    <div className="max-w-7xl mx-auto mt-20">
+    <div className="max-w-7xl mx-auto mt-10">
+      <div className="flex items-center justify-center mb-10 text-2xl md:text-3xl text-stone-600">
+        <p>DASHBOARD</p>
+      </div>
       <div className="mb-20 flex flex-wrap items-center justify-center px-2">
         <StaticsCard
           title="Total Sale"
