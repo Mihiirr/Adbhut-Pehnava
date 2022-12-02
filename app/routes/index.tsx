@@ -16,7 +16,7 @@ type LoaderData = {
   }>;
 };
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
   const featuredProducts = await getAllFeaturedProducts();
   const data: LoaderData = {
     featuredProducts,
