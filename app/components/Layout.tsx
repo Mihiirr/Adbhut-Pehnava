@@ -5,6 +5,7 @@ import FacebookIcon from "./Icons/FacebookIcon";
 import Logo from "./Logo";
 import CartIcon from "./Icons/CartIcon";
 import SideBar from "./SideBarMobile";
+import { useRootContext } from "~/context/root-context";
 
 type Props = {
   children: React.ReactNode;
@@ -12,6 +13,9 @@ type Props = {
 };
 
 const Layout: React.FC<Props> = ({ children, brownTitle }) => {
+  const {
+    rootState: { user },
+  } = useRootContext();
   return (
     <div className="bg-stone-50">
       {/* Brown Header */}
@@ -32,9 +36,11 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
 
         {/* laptop view */}
         <div className="hidden text-xs md:text-base md:flex items-center justify-center">
-          <Link to="/admin/dashboard">
-            <p className="ml-8">DASHBOARD</p>
-          </Link>
+          {user?.role === "ADMIN" && (
+            <Link to="/admin/dashboard">
+              <p className="ml-8">DASHBOARD</p>
+            </Link>
+          )}
           <Link to="/account/login">
             <p className="ml-8">LOGIN</p>
           </Link>

@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import { json, LoaderFunction, MetaFunction } from "@remix-run/node";
 import {
   Link,
   Links,
@@ -8,8 +8,11 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  useLoaderData,
 } from "@remix-run/react";
 import Button from "./components/Button";
+import { RootContextProvider } from "./context/root-context";
+import { getUser } from "./services/session.server";
 import styles from "./styles/app.css";
 
 export function links() {
@@ -42,6 +45,14 @@ export const meta: MetaFunction = () => {
   };
 };
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await getUser(request);
+  if (!user) {
+    return null;
+  }
+  return json(user);
+};
+
 function Document({
   children,
   title = "Adbhut Pehnava",
@@ -65,13 +76,17 @@ function Document({
 }
 
 export default function App() {
+  const loaderData = useLoaderData();
+  const rootContextData = { user: loaderData, isAuthModalOpen: false };
   return (
-    <Document>
-      <Meta />
-      <Outlet />
-      <ScrollRestoration />
-      <Scripts />
-    </Document>
+    <RootContextProvider initState={rootContextData}>
+      <Document>
+        <Meta />
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </Document>
+    </RootContextProvider>
   );
 }
 

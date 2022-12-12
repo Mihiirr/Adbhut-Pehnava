@@ -14,7 +14,7 @@ type Props = {
 
 const DeliveryContainer = (props: Props) => {
   return (
-    <div className="bg-white p-4 mt-20 first:mt-20">
+    <div className="bg-white p-4 mt-10 last:mt-20 first:mt-20">
       <p className="text-xl md:text-3xl">{props.title}</p>
       <table className="w-full mt-6 border-collapse">
         <tbody className="text-left">

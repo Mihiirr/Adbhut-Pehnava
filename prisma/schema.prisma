@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id         String   @id @default(cuid())
+  email      String?  @unique
+  username   String   @unique
+  password   String
+  role       String
+  createdAt  DateTime @default(now())
+  modifiedAt DateTime @default(now())
+  Order      Order[]
+  Cart       Cart[]
+}
+
+model Order {
+  id              String            @id @default(cuid())
+  userId          String
+  OrderItems      OrderItems[]
+  ShippingAddress ShippingAddress[]
+  paymentMethod   String
+  PaymentResult   PaymentResult[]
+  shippingPrice   Int
+  taxPrice        Int
+  isPaid          Boolean           @default(false)
+  isDelivered     Boolean           @default(false)
+  paidAt          DateTime
+  deliveredAt     DateTime
+  User            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Cart {
+  id        String  @id @default(uuid())
+  userId    String
+  products  Product[]
+  User      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Product {
+  id         String @id @default(uuid())
+  name       String
+  category   String
+  image      String
+  price      Int
+  inStock    Int     @default(0)
+  isNew      Boolean @default(false)
+  isFeatured Boolean @default(false)
+  cartId     String?
+  cart       Cart?    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+}
+
+model OrderItems {
+  id       String @id @default(uuid())
+  orderId  String
+  name     String
+  quantity Int
+  price    Int
+  imageUrl String
+  Order    Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model ShippingAddress {
+  id         String @id @default(uuid())
+  orderId    String
+  fullName   String
+  contact    Int
+  address    String
+  city       String
+  postalCode String
+  Country    String
+  Order      Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model PaymentResult {
+  id           String @id @default(uuid())
+  orderId      String
+  status       String
+  emailAddress String
+  Order        Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}

@@ -19,7 +19,7 @@ const HeaderLinks = [
   },
   {
     name: "CLIENTS",
-    href: "/wip",
+    href: "/admin/client",
   },
   {
     name: "PRODUCTS",

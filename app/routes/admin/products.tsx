@@ -66,7 +66,7 @@ const Products: React.FC<Props> = (props) => {
         </select>
         <input
           placeholder="Search Product"
-          className="pl-2 pr-8 py-1 md:py-2 rounded border-2"
+          className="w-40 pl-2 pr-8 py-1 md:py-2 rounded border-2"
         />
         <SearchIcon
           height="24"
