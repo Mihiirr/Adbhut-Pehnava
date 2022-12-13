@@ -1,11 +1,5 @@
 import { User } from "@prisma/client";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useReducer,
-} from "react";
+import { createContext, useContext, useMemo, useReducer } from "react";
 
 type State = { user: User | null; isAuthModalOpen: boolean };
 

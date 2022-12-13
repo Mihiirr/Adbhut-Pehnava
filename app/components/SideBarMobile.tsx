@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import { useState } from "react";
+import { useRootContext } from "~/context/root-context";
 import { collectionsMenu } from "~/menus";
 import CartIcon from "./Icons/CartIcon";
 import CrossIcon from "./Icons/CrossIcon";
@@ -17,6 +18,10 @@ const SideBar = () => {
   const showMenuHandler = () => {
     SetIsShopMenuOpen(!IsShopMenuOpen);
   };
+
+  const {
+    rootState: { user },
+  } = useRootContext();
   return (
     <>
       {IsSideBarOpen === false ? (
@@ -34,11 +39,14 @@ const SideBar = () => {
         } ease-in-out duration-200`}
       >
         <div className="mt-16 w-full text-xl">
-          <Link to="/admin/dashboard">
-            <p className="h-10 flex items-center w-full border-b-2 border-stone-300">
-              DASHBOARD
-            </p>
-          </Link>
+          {user?.role === "ADMIN" && (
+            <Link to="/admin/dashboard">
+              <p className="h-10 flex items-center w-full border-b-2 border-stone-300">
+                DASHBOARD
+              </p>
+            </Link>
+          )}
+
           <Link to="/cart">
             <div className="h-10 flex items-center w-full border-b-2 border-stone-300">
               <p>CART</p>
@@ -79,12 +87,25 @@ const SideBar = () => {
             </div>
           )}
           <div className="mt-5">
-            <Link to="/account/login">
-              <p className="h-8 flex items-center w-full">LOGIN</p>
-            </Link>
-            <Link to="/account/register">
-              <p className="h-8 flex items-center w-full">CREATE ACCOUNT</p>
-            </Link>
+            {user !== null ? (
+              <form action="/account/logout" method="post">
+                <button
+                  type="submit"
+                  className="px-2 h-10 bg-red-500 text-white hover:bg-red-400 hover:cursor-pointer rounded-md flex items-center "
+                >
+                  LOGOUT
+                </button>
+              </form>
+            ) : (
+              <>
+                <Link to="/account/login">
+                  <p className="h-8 flex items-center w-full">LOGIN</p>
+                </Link>
+                <Link to="/account/register">
+                  <p className="h-8 flex items-center w-full">CREATE ACCOUNT</p>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
