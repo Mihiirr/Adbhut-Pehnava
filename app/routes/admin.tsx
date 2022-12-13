@@ -1,9 +1,16 @@
-import { MetaFunction } from "@remix-run/node";
+import { LoaderFunction, MetaFunction, redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import React from "react";
 import AdminLayout from "~/components/Admin/AdminLayout";
+import { getUser } from "~/services/session.server";
 
 type Props = {};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await getUser(request);
+  if (user?.role === "USER" || user === null) return redirect("/", 301);
+  return null;
+};
 
 const Admin: React.FC<Props> = (props) => {
   return (
