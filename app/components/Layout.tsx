@@ -29,6 +29,12 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
       <div className="h-16 lg:h-20 w-full lg:max-w-7xl lg:mx-auto text-stone-600 flex items-center justify-between px-4 lg:px-0 border-b-2 border-stone-300">
         <Logo size="large" />
 
+        {user !== null && (
+          <p>
+            Hi, <strong>{user?.username}</strong>
+          </p>
+        )}
+
         {/* Mobile view */}
         <div className="md:hidden">
           <SideBar />
@@ -41,9 +47,20 @@ const Layout: React.FC<Props> = ({ children, brownTitle }) => {
               <p className="ml-8">DASHBOARD</p>
             </Link>
           )}
-          <Link to="/account/login">
-            <p className="ml-8">LOGIN</p>
-          </Link>
+          {user !== null ? (
+            <form action="/account/logout" method="post">
+              <button
+                type="submit"
+                className="px-2 h-10 ml-3 bg-red-500 text-white hover:bg-red-400 hover:cursor-pointer rounded-md flex items-center "
+              >
+                LOGOUT
+              </button>
+            </form>
+          ) : (
+            <Link to="/account/login">
+              <p className="ml-8">LOGIN</p>
+            </Link>
+          )}
           <Link to="/cart">
             <div className="h-10 px-2 ml-8 rounded-sm flex items-center justify-center border-2 border-stone-300">
               <CartIcon height="24" width="24" fill="none" stroke="black" />
