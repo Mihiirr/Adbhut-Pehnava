@@ -1,6 +1,6 @@
 import { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { Link, Outlet, useLoaderData } from "@remix-run/react";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Button from "~/components/Button";
 import DownArrowIcon from "~/components/Icons/DownArrowIcon";
 import Layout from "~/components/Layout";
@@ -23,20 +23,23 @@ export const meta: MetaFunction = () => {
   };
 };
 
-type LoaderData = {}[];
-
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
   const categoryLists = await getAllCategories();
   return categoryLists;
 };
 
 const Collection = () => {
-  const categoryLists = useLoaderData();
-  console.log(categoryLists);
+  const data = useLoaderData();
   const [IscollectionMenuOpen, SetIscollectionMenuOpen] = useState(false);
-
   const collectionsMenuHandler = () => {
     SetIscollectionMenuOpen(!IscollectionMenuOpen);
+  };
+
+  const [Target, SetTarget] = useState(String);
+
+  const handleFormSubmit = async (event: ChangeEvent<HTMLSelectElement>) => {
+    const sortValue = event.target.value;
+    SetTarget(sortValue);
   };
   return (
     <Layout brownTitle="Free shipping for orders over ₹2000">
@@ -47,13 +50,10 @@ const Collection = () => {
             BROWSE
           </div>
           <div className="mt-5 text-stone-500">
-            <Link to="all-products">
+            <Link to="all">
               <p>ALL PRODUCTS</p>
             </Link>
-            <Link to="new-arrivals">
-              <p>NEW ARRIVALS</p>
-            </Link>
-            {categoryLists.map((item: any) => (
+            {data.map((item: any) => (
               <Link to={item} key={item}>
                 <p>{item.toUpperCase()}</p>
               </Link>
@@ -74,6 +74,7 @@ const Collection = () => {
                     id="sortby-input"
                     name="size"
                     className="text-base border-2 ml-2 rounded"
+                    onChange={handleFormSubmit}
                   >
                     <option value="all">ALL</option>
                     <option value="featured">FEATURED</option>
@@ -111,7 +112,7 @@ const Collection = () => {
             </div>
           )}
           <div>
-            <Outlet />
+            <Outlet context={Target} />
           </div>
         </div>
       </div>

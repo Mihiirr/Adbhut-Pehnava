@@ -157,7 +157,55 @@ export async function getFeaturedProducts(): Promise<Product[]> {
       }
     }
 
-    // Image extraction logic goes here
+    return {
+      id: page.id,
+      name,
+      category,
+      price,
+      imageUrl,
+      inStocks,
+      isFeatured,
+      isNew,
+    };
+  });
+}
+
+// Get all featured products.
+export async function getNewProducts(): Promise<Product[]> {
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    filter: {
+      property: "IsNew",
+      checkbox: {
+        equals: true,
+      },
+    },
+  });
+
+  return response.results.map((page: any) => {
+    // Assuming page is of the correct type with properties
+    const props = page.properties;
+
+    // Extract properties similar to previous examples
+    const name = props.Name?.title[0]?.plain_text ?? "";
+    const category = props.Category?.select?.name ?? "";
+    const price = props.Price?.number ?? 0;
+    const inStocks = props.InStock?.number ?? 0;
+    const isFeatured = props.IsFeatured?.checkbox ?? false;
+    const isNew = props.IsNew?.checkbox ?? false;
+    let imageUrl = "";
+    if (
+      props.Image &&
+      props.Image.type === "files" &&
+      props.Image.files.length > 0
+    ) {
+      const file = props.Image.files[0];
+      if (file.type === "file") {
+        imageUrl = file.file.url;
+      } else if (file.type === "external") {
+        imageUrl = file.external.url;
+      }
+    }
 
     return {
       id: page.id,
@@ -172,6 +220,7 @@ export async function getFeaturedProducts(): Promise<Product[]> {
   });
 }
 
+// Get all category list.
 export async function getAllCategories(): Promise<string[]> {
   const response = await notion.databases.query({
     database_id: databaseId,
