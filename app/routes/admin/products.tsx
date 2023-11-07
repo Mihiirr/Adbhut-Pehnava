@@ -3,7 +3,7 @@ import { json, LoaderFunction } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import ProductContainer from "~/components/Admin/products/ProductContainer";
 import Button from "~/components/Button";
-import { getAllProducts } from "~/services/product.server";
+import { getProducts } from "~/services/notion.server";
 import SearchIcon from "~/components/Icons/SearchIcon";
 
 type Props = {};
@@ -12,43 +12,19 @@ type LoaderData = {
   allProducts: Array<{
     id: string;
     name: string;
-    image: string;
+    category: string;
+    imageUrl?: string;
     price: number;
-    inStock: number;
-    isNew: boolean;
+    inStocks: number;
     isFeatured: boolean;
-  }>;
-  dressProducts: Array<{
-    id: string;
-    name: string;
-    image: string;
-    price: number;
-    inStock: number;
     isNew: boolean;
-    isFeatured: boolean;
-  }>;
-  jewelleryProducts: Array<{
-    id: string;
-    name: string;
-    image: string;
-    price: number;
-    inStock: number;
-    isNew: boolean;
-    isFeatured: boolean;
   }>;
 };
 
 export const loader: LoaderFunction = async () => {
-  const allProducts = await getAllProducts();
-
-  const dressProducts = allProducts.filter((item) => item.category == "dress");
-  const jewelleryProducts = allProducts.filter(
-    (item) => item.category == "jewellery"
-  );
+  const allProducts = await getProducts();
   const data: LoaderData = {
     allProducts,
-    dressProducts,
-    jewelleryProducts,
   };
   return json(data);
 };

@@ -1,10 +1,11 @@
-import { MetaFunction } from "@remix-run/node";
-import { Link, Outlet } from "@remix-run/react";
+import { LoaderFunction, MetaFunction } from "@remix-run/node";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import Button from "~/components/Button";
 import DownArrowIcon from "~/components/Icons/DownArrowIcon";
 import Layout from "~/components/Layout";
 import { collectionsMenu } from "~/menus";
+import { getAllCategories } from "~/services/notion.server";
 
 export const meta: MetaFunction = () => {
   const description = `Welcome to Fashion World!`;
@@ -22,7 +23,16 @@ export const meta: MetaFunction = () => {
   };
 };
 
+type LoaderData = {}[];
+
+export const loader: LoaderFunction = async () => {
+  const categoryLists = await getAllCategories();
+  return categoryLists;
+};
+
 const Collection = () => {
+  const categoryLists = useLoaderData();
+  console.log(categoryLists);
   const [IscollectionMenuOpen, SetIscollectionMenuOpen] = useState(false);
 
   const collectionsMenuHandler = () => {
@@ -37,9 +47,15 @@ const Collection = () => {
             BROWSE
           </div>
           <div className="mt-5 text-stone-500">
-            {collectionsMenu.map((item) => (
-              <Link to={item.url} key={item.name}>
-                <p>{item.name}</p>
+            <Link to="all-products">
+              <p>ALL PRODUCTS</p>
+            </Link>
+            <Link to="new-arrivals">
+              <p>NEW ARRIVALS</p>
+            </Link>
+            {categoryLists.map((item: any) => (
+              <Link to={item} key={item}>
+                <p>{item.toUpperCase()}</p>
               </Link>
             ))}
           </div>

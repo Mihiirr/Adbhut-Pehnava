@@ -12,6 +12,7 @@
     "connect:database:develop": "pscale connect adbhut_pehnava develop --port 3309"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.13",
     "@prisma/client": "^4.5.0",
     "@remix-run/node": "^1.6.3",
     "@remix-run/react": "^1.6.3",

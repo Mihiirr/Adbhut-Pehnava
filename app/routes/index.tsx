@@ -2,22 +2,23 @@ import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import ItemContainer from "~/components/ItemContainer";
 import Layout from "~/components/Layout";
-import { getAllFeaturedProducts } from "~/services/product.server";
+import { getFeaturedProducts } from "~/services/notion.server";
 
 type LoaderData = {
   featuredProducts: Array<{
     id: string;
     name: string;
-    image: string;
+    category: string;
+    imageUrl?: string;
     price: number;
-    inStock: number;
-    isNew: boolean;
+    inStocks: number;
     isFeatured: boolean;
+    isNew: boolean;
   }>;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const featuredProducts = await getAllFeaturedProducts();
+  const featuredProducts = await getFeaturedProducts();
   const data: LoaderData = {
     featuredProducts,
   };
@@ -26,6 +27,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
+  console.log(data.featuredProducts);
   return (
     <Layout brownTitle="Free shipping for orders over ₹2000">
       {/* Corousel */}

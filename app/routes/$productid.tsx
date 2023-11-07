@@ -2,7 +2,7 @@ import { json, LoaderFunction, MetaFunction } from "@remix-run/node";
 import { Link, useCatch, useLoaderData, useParams } from "@remix-run/react";
 import Layout from "~/components/Layout";
 import Button from "~/components/Button";
-import { getUniqueProducts } from "~/services/product.server";
+import { getProductById } from "~/services/notion.server";
 
 export const meta: MetaFunction = ({
   data,
@@ -26,11 +26,11 @@ type LoaderData = {
     id: string;
     name: string;
     category: string;
-    image: string;
+    imageUrl?: string;
     price: number;
-    inStock: number;
-    isNew: boolean;
+    inStocks: number;
     isFeatured: boolean;
+    isNew: boolean;
   };
 };
 
@@ -41,7 +41,7 @@ export const loader: LoaderFunction = async ({ params }) => {
       status: 404,
     });
   }
-  const product = await getUniqueProducts(productId);
+  const product = await getProductById(productId);
   if (!product) {
     throw new Response("Product Not found.", {
       status: 404,

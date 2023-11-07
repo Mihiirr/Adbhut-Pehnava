@@ -82,17 +82,3 @@ export function getAllProducts() {
     },
   ];
 }
-
-export async function getAllFeaturedProducts() {
-  const product = await getAllProducts();
-  const featuredProduct = await product.filter(
-    (item) => item.isFeatured === true
-  );
-  return featuredProduct;
-}
-
-export async function getUniqueProducts(id: string) {
-  const product = await getAllProducts();
-  const featuredProduct = await product.find((item) => item.id === id);
-  return featuredProduct;
-}

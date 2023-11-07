@@ -1,24 +1,21 @@
 import { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { getAllProducts } from "~/services/product.server";
-
-type Props = {};
+import { getProducts } from "~/services/notion.server";
 
 type LoaderData = {
   id: string;
   name: string;
   category: string;
-  image: string;
+  imageUrl?: string;
   price: number;
-  inStock: number;
-  isNew: boolean;
+  inStocks: number;
   isFeatured: boolean;
+  isNew: boolean;
 }[];
 
 export const loader: LoaderFunction = async ({ params }) => {
   const category = await params.category;
-  const AllProducts = await getAllProducts();
-
+  const AllProducts = await getProducts();
   if (category === "dress" || category === "jewellery") {
     const categoryProducts = await AllProducts.filter(
       (item) => item.category === category
@@ -32,7 +29,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   return AllProducts;
 };
 
-const Category = (props: Props) => {
+const Category = () => {
   const data = useLoaderData<LoaderData>();
   return (
     <div className="h-full w-full grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-10 md:gap-x-19 mt-10 text-center">
@@ -40,7 +37,7 @@ const Category = (props: Props) => {
         <Link to={`/${item.id}`} key={item.id}>
           <div className="flex items-center">
             <img
-              src={`${item.image}`}
+              src={`${item.imageUrl}`}
               height="510"
               width="1520"
               alt="items"
