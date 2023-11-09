@@ -39,7 +39,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
-  console.log(data.featuredProducts);
   return (
     <Layout brownTitle="Free shipping for orders over ₹2000">
       {/* Corousel */}

@@ -240,3 +240,45 @@ export async function getAllCategories(): Promise<string[]> {
 
   return Array.from(categories);
 }
+
+// Counts the total products
+export async function countTotalProducts(): Promise<number> {
+  try {
+    const response = await notion.databases.query({
+      database_id: databaseId,
+    });
+    return response.results.length;
+  } catch (error) {
+    console.error("Error counting products:", error);
+    return 0; // Return 0 or handle the error as appropriate
+  }
+}
+
+export async function sumProductPrices(): Promise<number> {
+  let totalSum = 0;
+  let hasMore = true;
+  let startCursor: string | undefined = undefined;
+
+  try {
+    while (hasMore) {
+      const response = await notion.databases.query({
+        database_id: databaseId,
+        start_cursor: startCursor,
+      });
+
+      response.results.forEach((page: any) => {
+        if (page.properties.Price && page.properties.Price.type === "number") {
+          totalSum += page.properties.Price.number || 0;
+        }
+      });
+
+      hasMore = response.has_more;
+      startCursor = response.next_cursor || undefined;
+    }
+
+    return totalSum;
+  } catch (error) {
+    console.error("Error summing product prices:", error);
+    return 0; // Return 0 or handle the error as appropriate
+  }
+}

@@ -1,6 +1,13 @@
 // import { json, LoaderFunction } from "@remix-run/node";
 // import { useLoaderData } from "@remix-run/react";
+import { LoaderFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import StaticsCard from "~/components/Admin/dashboard/StaticsCard";
+import {
+  countTotalProducts,
+  getAllCategories,
+  sumProductPrices,
+} from "~/services/notion.server";
 
 // type LoaderData = {
 //   totalStocks: number;
@@ -10,7 +17,16 @@ import StaticsCard from "~/components/Admin/dashboard/StaticsCard";
 //   netAmountOfTotalStock: number;
 // };
 
+export const loader: LoaderFunction = async () => {
+  const totalProducts = await countTotalProducts();
+  const netAmountOfAllProducts = await sumProductPrices();
+  const totalVarietyProduct = await getAllCategories();
+
+  return { totalProducts, netAmountOfAllProducts, totalVarietyProduct };
+};
+
 const Dashboard = () => {
+  const data = useLoaderData();
   return (
     <div className="max-w-7xl mx-auto mt-10">
       <div className="flex items-center justify-center mb-10 text-2xl md:text-3xl text-stone-600">
@@ -34,12 +50,12 @@ const Dashboard = () => {
         />
         <StaticsCard
           title="Total Products"
-          amount={`10`}
-          description={`Net amount ₹12000`}
+          amount={`${data.totalProducts}`}
+          description={`Net amount ₹${data.netAmountOfAllProducts}`}
         />
         <StaticsCard
           title="Total Variety"
-          amount={`3`}
+          amount={`${data.totalVarietyProduct.length}`}
           description="10 total sales"
         />
         <StaticsCard

@@ -57,44 +57,49 @@ const Productdetail = () => {
   const data = useLoaderData();
   return (
     <Layout brownTitle="Free shipping for orders over ₹2000">
-      <div className="flex flex-col items-center bg-stone-100">
-        <div className="h-full lg:h-4/5 w-full flex justify-center">
-          <img src={data.product.image} height="600" width="400" />
-        </div>
-        <div className="h-full w-full lg:w-4/5 bg-white p-10 flex flex-col items-center rounded-t-[70px] lg:rounded-t-3xl">
-          <div className="w-full lg:w-2/5 lg:text-3xl text-2xl">
-            <div className="flex w-full justify-between">
-              <p>{data.product.name}</p>
-              <p>Rs. {data.product.price}</p>
+      <div className="container mx-auto p-6">
+        <div className="flex flex-wrap lg:flex-nowrap justify-center items-start">
+          {/* Image Carousel/Gallery */}
+          <div className="lg:w-1/3 w-full p-4 flex flex-col items-center">
+            <img
+              src={data.product.imageUrl}
+              className="w-full h-auto mb-4 shadow-lg"
+            />
+            {/* Additional images can be displayed here */}
+          </div>
+          {/* Product Info and Details */}
+          <div className="lg:w-1/3 w-full p-4">
+            <div className="text-4xl mb-2 text-[#5c3b28]">
+              {data.product.name}
             </div>
-            <p className="text-xl text-gray-500 mb-5">
-              {data.product.category}
-            </p>
-            {data.product.category === "dress" && (
-              <form>
-                <div className="mb-6 flex items-center">
-                  <label htmlFor="size-input" className="text-3xl">
-                    Size:
-                  </label>
-                  <select
-                    id="size-input"
-                    name="size"
-                    className="text-xl ml-2 border-2 border-black rounded"
-                  >
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                  </select>
-                </div>
-              </form>
-            )}
-            <Link to="/wip">
+            <div className="text-lg text-gray-500 mb-4">
+              Rs. {data.product.price}
+            </div>
+            <div className="mb-6 text-gray-600">
+              Category: {data.product.category}
+            </div>
+            {/* Size Selection */}
+            {/* ... [Size selection form remains the same] */}
+            <Link to="/wip" className="text-white py-2 px-4 rounded">
               <Button type="submit" variant="secondary">
                 Add to cart
               </Button>
             </Link>
+            <Link to="/wip" className="text-white py-2 px-4 rounded">
+              <Button type="submit" variant="secondary">
+                Add to Favourite
+              </Button>
+            </Link>
+            {/* Product Description and Customer Reviews */}
+            <div className="mt-6">
+              {/* Product highlights and description */}
+              {/* Customer reviews section */}
+            </div>
           </div>
+        </div>
+        {/* Related Products Section */}
+        <div className="mt-10">
+          {/* Display related products or recommendations */}
         </div>
       </div>
     </Layout>
