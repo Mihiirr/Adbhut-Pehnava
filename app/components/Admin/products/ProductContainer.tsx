@@ -9,11 +9,12 @@ type Props = {
   product: {
     id: string;
     name: string;
-    image: string;
-    inStock: number;
+    category: string;
+    imageUrl?: string;
     price: number;
-    isNew: boolean;
+    inStocks: number;
     isFeatured: boolean;
+    isNew: boolean;
   }[];
 };
 
@@ -33,7 +34,7 @@ const ProductContainer: React.FC<Props> = (props) => {
             <Link to={`/${items.id}`} key={items.id}>
               <div className="h-48 w-32 lg:h-96 lg:w-64 flex items-center">
                 <img
-                  src={`${items.image}`}
+                  src={`${items.imageUrl}`}
                   height={props.height}
                   width={props.width}
                   alt="items"

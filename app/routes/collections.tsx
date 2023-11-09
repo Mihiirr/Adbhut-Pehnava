@@ -1,10 +1,11 @@
-import { MetaFunction } from "@remix-run/node";
-import { Link, Outlet } from "@remix-run/react";
-import { useState } from "react";
+import { LoaderFunction, MetaFunction } from "@remix-run/node";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
+import { ChangeEvent, useState } from "react";
 import Button from "~/components/Button";
 import DownArrowIcon from "~/components/Icons/DownArrowIcon";
 import Layout from "~/components/Layout";
 import { collectionsMenu } from "~/menus";
+import { getAllCategories } from "~/services/notion.server";
 
 export const meta: MetaFunction = () => {
   const description = `Welcome to Fashion World!`;
@@ -22,11 +23,23 @@ export const meta: MetaFunction = () => {
   };
 };
 
-const Collection = () => {
-  const [IscollectionMenuOpen, SetIscollectionMenuOpen] = useState(false);
+export const loader: LoaderFunction = async ({ request }) => {
+  const categoryLists = await getAllCategories();
+  return categoryLists;
+};
 
+const Collection = () => {
+  const data = useLoaderData();
+  const [IscollectionMenuOpen, SetIscollectionMenuOpen] = useState(false);
   const collectionsMenuHandler = () => {
     SetIscollectionMenuOpen(!IscollectionMenuOpen);
+  };
+
+  const [Target, SetTarget] = useState(String);
+
+  const handleFormSubmit = async (event: ChangeEvent<HTMLSelectElement>) => {
+    const sortValue = event.target.value;
+    SetTarget(sortValue);
   };
   return (
     <Layout brownTitle="Free shipping for orders over ₹2000">
@@ -37,9 +50,12 @@ const Collection = () => {
             BROWSE
           </div>
           <div className="mt-5 text-stone-500">
-            {collectionsMenu.map((item) => (
-              <Link to={item.url} key={item.name}>
-                <p>{item.name}</p>
+            <Link to="all">
+              <p>ALL PRODUCTS</p>
+            </Link>
+            {data.map((item: any) => (
+              <Link to={item} key={item}>
+                <p>{item.toUpperCase()}</p>
               </Link>
             ))}
           </div>
@@ -58,6 +74,7 @@ const Collection = () => {
                     id="sortby-input"
                     name="size"
                     className="text-base border-2 ml-2 rounded"
+                    onChange={handleFormSubmit}
                   >
                     <option value="all">ALL</option>
                     <option value="featured">FEATURED</option>
@@ -95,7 +112,7 @@ const Collection = () => {
             </div>
           )}
           <div>
-            <Outlet />
+            <Outlet context={Target} />
           </div>
         </div>
       </div>

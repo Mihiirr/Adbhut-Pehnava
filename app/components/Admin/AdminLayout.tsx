@@ -1,6 +1,5 @@
 import { Link } from "@remix-run/react";
 import React from "react";
-import Button from "../Button";
 import Logo from "../Logo";
 import AdminSideBarMobile from "./AdminSideBarMobile";
 
@@ -53,12 +52,6 @@ const AdminLayout: React.FC<Props> = ({ children }) => {
               {item.name}
             </Link>
           ))}
-          <Link
-            to="/admin/addproduct"
-            className="mr-6 hover:underline hover:cursor-pointer"
-          >
-            <Button variant="secondary">Add Product</Button>
-          </Link>
         </div>
       </div>
       {/* Children */}

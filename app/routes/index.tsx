@@ -2,24 +2,37 @@ import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import ItemContainer from "~/components/ItemContainer";
 import Layout from "~/components/Layout";
-import { getAllFeaturedProducts } from "~/services/product.server";
+import { getFeaturedProducts, getNewProducts } from "~/services/notion.server";
 
 type LoaderData = {
   featuredProducts: Array<{
     id: string;
     name: string;
-    image: string;
+    category: string;
+    imageUrl?: string;
     price: number;
-    inStock: number;
-    isNew: boolean;
+    inStocks: number;
     isFeatured: boolean;
+    isNew: boolean;
+  }>;
+  newProducts: Array<{
+    id: string;
+    name: string;
+    category: string;
+    imageUrl?: string;
+    price: number;
+    inStocks: number;
+    isFeatured: boolean;
+    isNew: boolean;
   }>;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const featuredProducts = await getAllFeaturedProducts();
+  const featuredProducts = await getFeaturedProducts();
+  const newProducts = await getNewProducts();
   const data: LoaderData = {
     featuredProducts,
+    newProducts,
   };
   return json(data);
 };
@@ -44,6 +57,13 @@ export default function Index() {
         height="379"
         width="252"
         product={data.featuredProducts}
+      />
+      {/* Newly Arrivals */}
+      <ItemContainer
+        title="NEWLY ARRIVALS"
+        height="379"
+        width="252"
+        product={data.newProducts}
       />
     </Layout>
   );
